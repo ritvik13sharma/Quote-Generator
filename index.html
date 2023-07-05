@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&#129504; Quotes</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            background-color: rgb(139,165,202);
+            color:white;
+        }
+        #main-container{
+            height: 40vh;
+            width: 101vh;
+            border: 1px solid grey;
+            border-radius: 20px;
+            background-color: rgb(81,110,152);
+            margin-top: 2vh;
+            margin-left: 56vh;
+        }
+        #welcome{
+            font-size:4vh;
+            font-weight: bold;
+            margin-top: 20vh;
+            margin-left: 76vh;
+        }
+        #quote{
+            font-size: 5vh;
+            height: 8vh;
+            margin: 5vh;
+            font-weight: bold;
+        }
+        #speaker{
+            width: 30vh;
+            font-size: 3vh;
+            font-weight: bold;
+            margin-left: 72vh;
+            margin-top: 9vh;
+        }
+        #but {
+            font-size: 2.3vh;
+            height: 6vh;
+            width: 24vh;
+            margin-top: 4vh;
+            margin-left: 36vh;
+            color: white;
+            font-weight: bold;
+            background-color: rgb(139,165,202);
+            border-radius: 1vh;
+            padding: 1vh;
+        }
+        footer{
+            margin-top:30.4vh;
+            background-color: rgb(223, 208, 208);
+            color:black;
+            font-size: 2.3vh;
+        }
+        span{
+            margin-left:89vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="welcome">Let's start with our Morning Quote</div>
+    <div id="main-container">
+        <div id="quote">" In the end, it's not the years in your life that count. It's the life in your years."</div>
+        <div id="speaker">~ Abraham Lincoln</div>
+        <button id="but" onclick="newquote()">New Quote Please!</button>
+    </div>
+    <footer>
+        <span>Created by Ritvik Sharma.</span>
+    </footer>
+
+    <script>
+
+        function Quotes(quote,speak,backcolor,maincolor) //object constructor
+        {
+            this.quotestr=quote;
+            this.speaker=speak;
+            this.mainc=maincolor;
+            this.backc=backcolor;
+        }
+
+        let quotearr= new Array();
+        quotearr.push(new Quotes('" The only way to do great work is to love what you do."','~ Steve Jobs','rgb(104 187 216)','rgb(146 193 210)'));
+        quotearr.push(new Quotes('In the end, it\'s not the years in your life that count. It\'s the life in your years."','~ Abraham Lincoln','rgb(139,165,202)','rgb(81,110,152)'));
+        quotearr.push(new Quotes('"The greatest glory in living lies not in never falling, but in rising every time we fall." ','~ Nelson Mandela','rgb(120 215 158)','rgb(76 188 119)'));
+        quotearr.push(new Quotes('"Don\'t watch the clock; do what it does. Keep going."','~ Sam Levenson','rgb(215 122 59)','rgb(236 153 104)'));
+        quotearr.push(new Quotes('"Success is not final, failure is not fatal: It is the courage to continue that counts."','~ Winston Churchill','rgb(126 84 165)','rgb(197, 112, 184)'));
+        quotearr.push(new Quotes('"The future belongs to those who believe in the beauty of their dreams." ','~ Eleanor Roosevelt','rgb(104 187 216)','rgb(146 193 210)'));
+        quotearr.push(new Quotes('"The greatest pleasure in life is doing what people say you cannot do." ','~ Walter Bagehot','rgb(104 187 216)','rgb(146 193 210)'));
+        quotearr.push(new Quotes('"Believe you can and you\'re halfway there." ','~ Theodore Roosevelt','rgb(120 215 158)','rgb(76 188 119)'));
+        quotearr.push(new Quotes('"Opportunities don\'t happen. You create them." ','~ Chris Grosser','rgb(235 132 174)','rgb(248 170 198)'));
+        quotearr.push(new Quotes('"I have not failed. I\'ve just found 10,000 ways that won\'t work." ','~ Thomas Edison','rgb(255,230,213)','rgb(241,207,187)'));
+        quotearr.push(new Quotes('"The harder I work, the luckier I get." ','~ Sameul Goldwyn','rgb(139,165,202)','rgb(81,110,152)'));
+        quotearr.push(new Quotes('"The biggest risk is not taking any risk. "','~ Mark Zuckerberg','rgb(215 122 59)','rgb(236 153 104)'));
+
+        function timing()
+        {
+            let t= new Date().getHours;
+            let time;
+            if(t>=5 && t<12)
+            time='Morning';
+            else if ( t>=12 && t<=3)
+            time='Afternoon';
+            else if (t>3 && t<8)
+            time='Evening';
+            else
+            time='Night';
+
+            document.getElementById("welcome").innerHTML=`Let's start with our ${time} Quote`;
+        }
+
+        timing();
+
+        function newquote()
+        {
+            let x= Math.floor(12*(Math.random()));
+            document.getElementById("quote").innerHTML=quotearr[x].quotestr;
+            document.getElementById("speaker").innerHTML=quotearr[x].speaker;
+            document.body.style.backgroundColor=quotearr[x].backc;
+            document.getElementById("main-container").style.backgroundColor=quotearr[x].mainc;
+            document.getElementById("but").style.backgroundColor=quotearr[x].backc;
+        }
+
+    </script>
+    
+</body>
+</html>
